@@ -1,0 +1,29 @@
+<script type="text/javascript" src="./js/angular.min.js"></script>
+<script type="text/javascript" src="./js/ng-file-upload.min.js"></script>
+<script src="./app.js"></script>
+<div ng-app="MyApp" ng-controller="MyController">
+
+    <h3>Upload csv file:</h3>
+    <input type="file" ngf-select="SelectFile($file)" />
+    <input type="button" value="Upload" ng-click="Upload()" />
+    <hr />
+
+    Search : <input type="text" ng-model="searchText" /> <br/><br/><br/>
+    <table id="tblCustomers" cellpadding="0" cellspacing="0" ng-show="IsVisible" border="1">
+        <tr>
+            <th>First Name</th>
+            <th>Sur Name</th>
+            <th>Issue count</th>
+            <th>Date of birth</th>
+        </tr>
+        <tbody ng-repeat="m in Customers | filter : minimalCount(searchText)" >
+        <tr>
+            <td>{{m.firstName}}</td>
+            <td>{{m.surName}}</td>
+            <td>{{m.issueCount}}</td>
+            <td>{{m.dob}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
